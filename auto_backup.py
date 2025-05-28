@@ -10,21 +10,12 @@ PASSWORD = "Password"
 
 # List of devices with custom commands
 DEVICES = [
-    {"ip": "192.168.100.126", "command": "show run"},
-    {"ip": "192.168.100.1", "command": "show run"},
-    {"ip": "192.168.100.2", "command": "show run"},
-    {"ip": "192.168.100.3", "command": "show run"},
-    {"ip": "192.168.100.4", "command": "show run"},
-    {"ip": "192.168.100.13", "command": "show run"},
-    {"ip": "192.168.100.40", "command": "show run"},
-    {"ip": "192.168.100.40", "command": "show config"},
-    {"ip": "192.168.100.30", "command": "scp export device-state source-ip 192.168.100.30 to sftpuser@192.168.6.60:/home/sftpuser/uploads/"},
-    {"ip": "192.168.100.20", "command": "scp export device-state source-ip 192.168.100.20 to sftpuser@192.168.6.60:/home/sftpuser/uploads/"},
+    {"ip": "IP/Hostname", "command": "<Command based on device to pull the backup config>"},
 ]
 
 # AWS S3 Configuration
-S3_BUCKET = "csatf-backups"
-S3_PREFIX = "network_devices"
+S3_BUCKET = "S3 Bucket"
+S3_PREFIX = "Folder inside buckert if applicable"
 ACCESS_KEY = "your-access-key"
 SECRET_KEY = "your-secret-key"
 
@@ -91,7 +82,7 @@ for device in DEVICES:
                 print(f"Command error from {device['ip']}: {error_output}")
 
             # Save output to file
-            timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+            timestamp = datetime.datetime.now().strftime("%Y-%m-%d")
             filename = f"{device['ip']}_{timestamp}.txt"
             with open(filename, "w") as file:
                 file.write(output)
