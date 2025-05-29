@@ -9,7 +9,7 @@ sudo apt install -y python3-venv
 # Install required Python packages
 pip install -r requirements.txt --break-system-packages
 # Set up cron job to run main.py once a week, sunday at 12:00 AM
-(crontab -l ; echo "0 0 * * sun /home/$USER/auto-backup/main.py") | crontab -
+(crontab -l ; echo "0 0 * * 0 /home/$USER/auto-backup/main.py") | crontab -
 echo "Environment setup complete. You can now start using the project."
 # Install SFTP enable and configure it as needed to RUN   
 
